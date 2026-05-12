@@ -22,7 +22,7 @@ pip install .
 ```bash
 tree-printer . 
 ```
-or:
+  or:
 ```bash
 tp .
 ```
@@ -30,7 +30,7 @@ tp .
 ```bash
 tree-printer goal_directory_path
 ```
-or:
+  or:
 ```bash
 tp goal_directory_path
 ```
@@ -38,7 +38,7 @@ tp goal_directory_path
 ```bash
 tree-printer --max-depth 2
 ```
-or:
+  or:
 ```bash
 tp . -md 2
 ```
@@ -46,7 +46,7 @@ tp . -md 2
 ```bash
 tree-printer --show-hidden
 ```
-or easier:
+  or:
 ```bash
 tp -sh
 ```
@@ -54,7 +54,7 @@ tp -sh
 ```bash
 tree-printer --output tree.txt
 ```
-or:
+  or:
 ```bash
 tp -o tree.txt
 ```
