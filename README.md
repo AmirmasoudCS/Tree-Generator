@@ -59,11 +59,12 @@ tree-printer --output tree.txt
 tp -o tree.txt
 ```
 ## ⚙️ CLI Options
-| Option | Description |
-| ------ | ----------- |
-| `-md`, `--max-depth` | Limit recursion depth |
-| `-sh`, `--show-hidden`| Include filtered files |
-| `-o`, `--output` | Save output to a file |
+| Full Command | Alias | Description |
+|---|---|---|
+| `--max-depth` | `-md` | Limit recursion depth |
+| `--show-hidden` | `-sh` | Include hidden files |
+| `--output` | `-o` | Save output to a file |
+`
 ## 📁 Project Structure
 ```
 ├── tree_printer
