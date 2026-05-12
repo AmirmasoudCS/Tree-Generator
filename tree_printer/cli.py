@@ -17,10 +17,21 @@ def run():
         default=None,
         help="Maximum directory depth that will be generated"
     )
+    parser.add_argument(
+        "--output",
+        "-o",
+        help = "Write tree output to a file instead of printing"
+    )
     args = parser.parse_args()
     printer = TreePrinter(root_path=args.path)
     formatter = TreeFormatter()
     tree = printer.build_tree()
     lines = formatter.format(tree, max_depth=args.max_depth)
-    for line in lines:
-        print(line)
+    output = "\n".join(lines)
+    if args.output:
+        with open(args.output, "w", encoding="utf-8") as file:
+            file.write(output)
+        print(f"Tree written into {args.output}")
+    else:
+        print(output)
+    
