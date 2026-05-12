@@ -3,52 +3,60 @@ A Python CLI tool for generating clean directory tree structures.
 Built with an OOP architecture featuring recursive tree models, formatting abstraction, and CLI support.
 ## ✨ Features
 - Recursive directory tree generation
-- Configurable exclusions
+- Configurable file and directories exclusions
 - Hidden file filtering
 - Maximum depth limiting
 - Output to text files
-- Clean CLI interface
+- Command-line interface with argparse
 ## 🚀 Installation
 1. **Clone the repository**
 ```bash
 git clone https://github.com/AmirmasoudCS/Tree-Generator.git
 ```
-2. **Run the program**
+2. **Install the packages**
 ```bash
-python main.py
+pip install .
 ```
 ## ⌨️ Usage
 1. **Print *current* directory:**
 ```bash
-python main.py 
+tree-printer . 
+```
+or:
+```bash
+tp .
 ```
 2. **Print a *specific* directory:**
 ```bash
-python main.py goal_directory_path
+tree-printer goal_directory_path
+```
+or:
+```bash
+tp goal_directory_path
 ```
 3. ***Limit* recursion depth:**
 ```bash
-python main.py --max-depth 2
+tree-printer --max-depth 2
 ```
-or easier:
+or:
 ```bash
-python main.py . -md 2
+tp . -md 2
 ```
 4. **Show *hidden* files:**
 ```bash
-python main.py --show-hidden
+tree-printer --show-hidden
 ```
 or easier:
 ```bash
-python main.py -sh
+tp -sh
 ```
 5. ***Write output* tree to a file instead of printing to the console:**
 ```bash
-python main.py --output tree.txt
+tree-printer --output tree.txt
 ```
-or easier:
+or:
 ```bash
-python main.py -o tree.txt
+tp -o tree.txt
 ```
 ## 📁 Project Structure
 ```
@@ -61,7 +69,19 @@ python main.py -o tree.txt
 │   └── printer.py
 ├── LICENSE
 ├── main.py
+├── pyproject.toml
 └── README.md
+```
+## 📌 Example Output
+```text
+├── project
+│   ├── __init__.py
+│   ├── database.py
+│   └── logic.py
+├── main.py
+├── secrets.txt
+└── image.png
+
 ```
 ## ⚖️ License
 This project is licensed under the MIT [LICENSE](LICENSE). This means you are free to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the software, provided that the original copyright notice and this permission notice are included in all copies or substantial portions of the software. The software is provided “as is”, without warranty of any kind, express or implied, and in no event shall the authors be liable for any claim, damages, or other liability arising from its use.
