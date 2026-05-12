@@ -64,7 +64,7 @@ tp -o tree.txt
 | `--max-depth` | `-md` | Limit recursion depth |
 | `--show-hidden` | `-sh` | Include hidden files |
 | `--output` | `-o` | Save output to a file |
-`
+
 ## 📁 Project Structure
 ```
 ├── tree_printer
