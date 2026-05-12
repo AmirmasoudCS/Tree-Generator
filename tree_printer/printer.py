@@ -8,12 +8,14 @@ from .models import TreeNode
 class TreePrinter:
     def __init__(
         self,
-        root_path=".",
+        root_path : str | Path = ".",
         exclude_dirs=None,
         exclude_files=None,
         exclude_suffixes=None,
+        show_hidden=False
     ):
         self.root = Path(root_path)
+        self.show_hidden = show_hidden
 
         self.exclude_dirs = exclude_dirs or DEFAULT_EXCLUDE_DIRS
         self.exclude_files = exclude_files or DEFAULT_EXCLUDE_FILES
@@ -31,7 +33,7 @@ class TreePrinter:
             [
                 item
                 for item in path.iterdir()
-                if not self.should_exclude(item)
+                if (self.show_hidden or not item.name.startswith(".")) and not self.should_exclude(item)
             ],
             key=lambda x: (x.is_file(), x.name.lower())
         )
