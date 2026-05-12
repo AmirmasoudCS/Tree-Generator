@@ -13,7 +13,7 @@ Built with an OOP architecture featuring recursive tree models, formatting abstr
 ```bash
 git clone https://github.com/AmirmasoudCS/Tree-Generator.git
 ```
-2. **Install the packages**
+2. **Install the project**
 ```bash
 pip install .
 ```
@@ -58,6 +58,12 @@ or:
 ```bash
 tp -o tree.txt
 ```
+## ⚙️ CLI Options
+| Option | Description |
+| ------ | ----------- |
+| `-md`, `--max-depth` | Limit recursion depth |
+| `-sh`, `--show-hidden`| Include filtered files |
+| `-o`, `--output` | Save output to a file |
 ## 📁 Project Structure
 ```
 ├── tree_printer
