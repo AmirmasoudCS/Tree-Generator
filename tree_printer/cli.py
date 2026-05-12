@@ -22,8 +22,13 @@ def run():
         "-o",
         help = "Write tree output to a file instead of printing"
     )
+    parser.add_argument(
+        "--show-hidden",
+        action="store_true",
+        help="Include hidden files and directories"
+    )
     args = parser.parse_args()
-    printer = TreePrinter(root_path=args.path)
+    printer = TreePrinter(root_path=args.path, show_hidden=args.show_hidden)
     formatter = TreeFormatter()
     tree = printer.build_tree()
     lines = formatter.format(tree, max_depth=args.max_depth)
