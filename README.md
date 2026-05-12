@@ -1,4 +1,4 @@
-# 🌲 Tree Printer
+# 🌲 Tree Generator
 A Python CLI tool for generating clean directory tree structures.
 Built with an OOP architecture featuring recursive tree models, formatting abstraction, and CLI support.
 ## ✨ Features
