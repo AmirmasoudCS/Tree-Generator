@@ -13,20 +13,20 @@ Built with an OOP architecture featuring recursive tree models, formatting abstr
 ```bash
 git clone https://github.com/AmirmasoudCS/Tree-Generator.git
 ```
-2. Run the program
+2. **Run the program**
 ```bash
 python main.py
 ```
 ## ⌨️ Usage
-1. Print current directory:
+1. **Print *current* directory:**
 ```bash
 python main.py 
 ```
-2. Print a specific directory:
+2. **Print a *specific* directory:**
 ```bash
 python main.py goal_directory_path
 ```
-3. Limit recursion depth:
+3. ***Limit* recursion depth:**
 ```bash
 python main.py --max-depth 2
 ```
@@ -34,7 +34,7 @@ or easier:
 ```bash
 python main.py . -md 2
 ```
-4. Show hidden files:
+4. **Show *hidden* files:**
 ```bash
 python main.py --show-hidden
 ```
@@ -42,7 +42,7 @@ or easier:
 ```bash
 python main.py -sh
 ```
-5. Write output tree to a file instead of printing to the console:
+5. ***Write output* tree to a file instead of printing to the console:**
 ```bash
 python main.py --output tree.txt
 ```
