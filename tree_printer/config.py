@@ -12,4 +12,5 @@ DEFAULT_EXCLUDE_FILES = {
 }
 DEFAULT_EXCLUDE_SUFFIXES = {
     ".pyc",
+    ".egg-info"
 }
