@@ -13,6 +13,7 @@ def run():
     )
     parser.add_argument(
         "--max-depth",
+        "-md",
         type=int,
         default=None,
         help="Maximum directory depth that will be generated"
@@ -24,6 +25,7 @@ def run():
     )
     parser.add_argument(
         "--show-hidden",
+        "-sh",
         action="store_true",
         help="Include hidden files and directories"
     )
