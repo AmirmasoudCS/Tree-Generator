@@ -58,13 +58,21 @@ tree-printer --output tree.txt
 ```bash
 tp -o tree.txt
 ```
+6. Write only **directories** in the output tree:
+```bash
+tree-printer --dirs-only
+```
+  or:
+```bash
+tp -do
+```
 ## ⚙️ CLI Options
 | Full Command | Alias | Description |
 |---|---|---|
 | `--max-depth` | `-md` | Limit recursion depth |
 | `--show-hidden` | `-sh` | Include hidden files |
 | `--output` | `-o` | Save output to a file |
-
+| `--dirs-only` | `-do` | Prints only directories |
 ## 📁 Project Structure
 ```
 ├── tree_printer
