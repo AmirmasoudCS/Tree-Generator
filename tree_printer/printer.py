@@ -1,5 +1,8 @@
-
 from pathlib import Path
+
+from tree_printer.models import TreeNode
+
+
 class TreePrinter:
     def __init__(
         self,
@@ -9,15 +12,18 @@ class TreePrinter:
         exclude_suffixes=None,
     ):
         self.root = Path(root_path)
+
         self.exclude_dirs = exclude_dirs or set()
         self.exclude_files = exclude_files or set()
         self.exclude_suffixes = exclude_suffixes or set()
+
     def should_exclude(self, path: Path) -> bool:
         return (
             path.name in self.exclude_dirs
             or path.name in self.exclude_files
             or path.suffix in self.exclude_suffixes
         )
+
     def get_items(self, path: Path) -> list[Path]:
         return sorted(
             [
@@ -27,24 +33,18 @@ class TreePrinter:
             ],
             key=lambda x: (x.is_file(), x.name.lower())
         )
-    def generate_tree(
-        self,
-        path: Path | None = None,
-        prefix: str = ""
-    ) -> list[str]:
+
+    def build_tree(self, path: Path | None = None) -> TreeNode:
         path = path or self.root
-        lines = []
-        items = self.get_items(path)
-        for index, item in enumerate(items):
-            is_last = index == len(items) - 1
-            connector = "└── " if is_last else "├── "
-            lines.append(prefix + connector + item.name)
-            if item.is_dir():
-                extension = "    " if is_last else "│   "
-                lines.extend(
-                    self.generate_tree(
-                        item,
-                        prefix + extension
-                    )
-                )
-        return lines
+
+        node = TreeNode(
+            name=path.name,
+            is_dir=path.is_dir(),
+        )
+
+        if path.is_dir():
+            for item in self.get_items(path):
+                child_node = self.build_tree(item)
+                node.children.append(child_node)
+
+        return node
