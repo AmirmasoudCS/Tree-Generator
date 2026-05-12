@@ -1,6 +1,6 @@
 DEFAULT_EXCLUDE_DIRS ={
     ".git",
-    "__pychache__",
+    "__pycache__",
     ".venv",
     "venv",
     "dist",
