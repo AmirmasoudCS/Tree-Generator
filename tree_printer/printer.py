@@ -1,6 +1,8 @@
 from pathlib import Path
-
-from tree_printer.models import TreeNode
+from .config import DEFAULT_EXCLUDE_DIRS 
+from .config import DEFAULT_EXCLUDE_FILES 
+from .config import DEFAULT_EXCLUDE_SUFFIXES 
+from .models import TreeNode
 
 
 class TreePrinter:
@@ -13,9 +15,9 @@ class TreePrinter:
     ):
         self.root = Path(root_path)
 
-        self.exclude_dirs = exclude_dirs or set()
-        self.exclude_files = exclude_files or set()
-        self.exclude_suffixes = exclude_suffixes or set()
+        self.exclude_dirs = exclude_dirs or DEFAULT_EXCLUDE_DIRS
+        self.exclude_files = exclude_files or DEFAULT_EXCLUDE_FILES
+        self.exclude_suffixes = exclude_suffixes or DEFAULT_EXCLUDE_SUFFIXES
 
     def should_exclude(self, path: Path) -> bool:
         return (
