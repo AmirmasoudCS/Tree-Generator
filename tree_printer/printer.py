@@ -9,13 +9,15 @@ class TreePrinter:
     def __init__(
         self,
         root_path : str | Path = ".",
-        exclude_dirs=None,
-        exclude_files=None,
-        exclude_suffixes=None,
-        show_hidden=False
+        exclude_dirs : list[str] | None = None,
+        exclude_files : list[str] | None = None,
+        exclude_suffixes : list[str] | None = None,
+        show_hidden : bool = False,
+        dirs_only : bool = False
     ):
         self.root = Path(root_path)
         self.show_hidden = show_hidden
+        self.dirs_only = dirs_only
 
         self.exclude_dirs = exclude_dirs or DEFAULT_EXCLUDE_DIRS
         self.exclude_files = exclude_files or DEFAULT_EXCLUDE_FILES
@@ -33,7 +35,11 @@ class TreePrinter:
             [
                 item
                 for item in path.iterdir()
-                if (self.show_hidden or not item.name.startswith(".")) and not self.should_exclude(item)
+                if (
+                    (self.show_hidden or not item.name.startswith("."))
+                    and not self.should_exclude(item)
+                    and (not self.dirs_only or item.is_dir())
+                )
             ],
             key=lambda x: (x.is_file(), x.name.lower())
         )

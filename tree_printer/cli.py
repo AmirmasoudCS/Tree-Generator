@@ -1,9 +1,9 @@
 import argparse
 from .printer import  TreePrinter
 from .formatter import TreeFormatter
-def run():
+def run() -> None:
     parser = argparse.ArgumentParser(
-        description="========== Print a directory tree =========="
+        description="Generate and print directory tree structures"
     )
     parser.add_argument(
         "path",
@@ -29,8 +29,18 @@ def run():
         action="store_true",
         help="Include hidden files and directories"
     )
+    parser.add_argument(
+        "--dirs-only",
+        "-do",
+        action="store_true",
+        help="Show directories only"
+    )
     args = parser.parse_args()
-    printer = TreePrinter(root_path=args.path, show_hidden=args.show_hidden)
+    printer = TreePrinter(
+                        root_path=args.path,
+                        show_hidden=args.show_hidden,
+                        dirs_only=args.dirs_only
+                        )
     formatter = TreeFormatter()
     tree = printer.build_tree()
     lines = formatter.format(tree, max_depth=args.max_depth)
