@@ -73,6 +73,9 @@ tp -do
 | `--show-hidden` | `-sh` | Include hidden files |
 | `--output` | `-o` | Save output to a file |
 | `--dirs-only` | `-do` | Prints only directories |
+| `--exclude-dirs` | `-ed` |Exclude directories by name|
+|`--exclude-files`|`ef`|Exclude files by name|
+|`--exclude-suffixes`|`-ef`|Exclude files by suffixes|
 ## 📁 Project Structure
 ```
 ├── tree_printer
