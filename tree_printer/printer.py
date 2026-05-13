@@ -15,13 +15,15 @@ class TreePrinter:
         show_hidden : bool = False,
         dirs_only : bool = False,
         show_size : bool = False,
-        show_modified : bool = False
+        show_modified : bool = False,
+        sort_by : str = "name"
     ):
         self.root = Path(root_path)
         self.show_hidden = show_hidden
         self.dirs_only = dirs_only
         self.show_size = show_size
         self.show_modified = show_modified
+        self.sort_by = sort_by 
 
         self.exclude_dirs = (DEFAULT_EXCLUDE_DIRS if exclude_dirs is None else exclude_dirs)
         self.exclude_files = (DEFAULT_EXCLUDE_FILES if exclude_files is None else exclude_files)
@@ -45,7 +47,7 @@ class TreePrinter:
                     and (not self.dirs_only or item.is_dir())
                 )
             ],
-            key=lambda x: (x.is_file(), x.name.lower())
+            key=self.sort_key
         )
 
     def build_tree(self, path: Path | None = None) -> TreeNode:
@@ -71,3 +73,17 @@ class TreePrinter:
                 node.children.append(child_node)
 
         return node
+    def sort_key(self, path : Path):
+        if self.sort_by == "size":
+            try:
+                size = path.stat().st_size
+            except OSError:
+                size = 0
+            return (not path.is_dir(), -size, path.name.lower())
+        elif self.sort_by == "modified":
+            try:
+                mtime = path.stat().st_mtime
+            except OSError:
+                mtime = 0 
+            return (not path.is_dir(), -mtime, path.name.lower())
+        return (not path.is_dir(), path.name.lower())

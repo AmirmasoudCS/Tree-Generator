@@ -74,6 +74,13 @@ def run() -> None:
         action="store_true",
         help="Show icons next to files and directories"
     )
+    parser.add_argument(
+        "--sort",
+        "-st",
+        choices=["name", "size", "modified"],
+        default = "name",
+        help = "Sort files by name, size or modified dat"
+    )
     args = parser.parse_args()
     printer = TreePrinter(
                         root_path=args.path,
@@ -83,7 +90,8 @@ def run() -> None:
                         exclude_files=args.exclude_files,
                         exclude_suffixes=args.exclude_suffixes,
                         show_size=args.size,
-                        show_modified=args.modified
+                        show_modified=args.modified,
+                        sort_by=args.sort
                         )
     formatter = TreeFormatter(show_icons=args.icons)
     tree = printer.build_tree()
