@@ -68,6 +68,12 @@ def run() -> None:
         action="store_true",
         help="Show last modified time"
     )
+    parser.add_argument(
+        "--icons",
+        "-i",
+        action="store_true",
+        help="Show icons next to files and directories"
+    )
     args = parser.parse_args()
     printer = TreePrinter(
                         root_path=args.path,
@@ -79,7 +85,7 @@ def run() -> None:
                         show_size=args.size,
                         show_modified=args.modified
                         )
-    formatter = TreeFormatter()
+    formatter = TreeFormatter(show_icons=args.icons)
     tree = printer.build_tree()
     lines = formatter.format(tree, max_depth=args.max_depth)
     output = "\n".join(lines)

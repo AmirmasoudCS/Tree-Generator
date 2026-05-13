@@ -1,6 +1,13 @@
 from datetime import datetime
 from tree_printer.models import TreeNode
+from pathlib import Path
+from .icons import FILE_ICONS as fi
 class TreeFormatter:
+    def __init__(
+            self,
+            show_icons : bool = False,
+    ):
+        self.show_icons = show_icons
     def format_metadata(self, node : TreeNode) -> str:
         metadata = []
         if node.size is not None:
@@ -8,9 +15,10 @@ class TreeFormatter:
         if node.modified is not None:
             formatted_date = datetime.fromtimestamp(node.modified).strftime("%Y-%m-%d %H:%M")
             metadata.append(formatted_date)
+        label = f"{self.get_icon(node)}{node.name}"
         if metadata:
-            return f"{node.name} ({' | '.join(metadata)})"
-        return node.name
+            return f"{label} ({' | '.join(metadata)})"
+        return label
     def format(
             self,
             node : TreeNode,
@@ -22,7 +30,7 @@ class TreeFormatter:
             return []
         lines = []
         if depth == 0 :
-            lines.append(node.name)
+            lines.append(self.format_metadata(node))
         for index, child in enumerate(node.children):
             is_last = index == len(node.children) - 1
             connector = "└── " if is_last else "├── "
@@ -38,3 +46,10 @@ class TreeFormatter:
                     )
                 )
         return lines
+    def get_icon(self, node : TreeNode) -> str :
+        if not self.show_icons:
+            return ""
+        if node.is_dir:
+            return "📁 "
+        suffix = Path(node.name).suffix.lower()
+        return fi.get(suffix, "📄 ")
