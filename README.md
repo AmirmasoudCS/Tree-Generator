@@ -1,10 +1,19 @@
 # 🌲 Tree Printer
+
+[![GitHub release](https://img.shields.io/github/v/release/AmirmasoudCS/Tree-Printer)](https://github.com/AmirmasoudCS/Tree-Printer/releases)
+[![License](https://img.shields.io/github/license/AmirmasoudCS/Tree-Printer)](https://github.com/AmirmasoudCS/Tree-Printer/blob/main/LICENSE)
+[![Python 3.10+](https://img.shields.io/badge/python-3.10%2B-blue.svg)](https://www.python.org/downloads/)
+
 A Python CLI tool for generating clean and customizable directory tree structures directly from the terminal.
 
 Supports filtering, sorting, icons, metadata display, and export to text files.
+
 ## 🧰 Requirements
+
 - Python 3.10+
+
 ## 👀 Preview
+
 ```text
 📁 Project
 ├── 📁 tree_printer
@@ -14,8 +23,10 @@ Supports filtering, sorting, icons, metadata display, and export to text files.
 ├── 🐍 main.py
 ├── ⚙️ pyproject.toml
 └── 📘 README.md
+
 ```
 ## ✨ Features
+
 - Recursive directory tree generation
 - Configurable file and directory exclusions
 - Hidden file filtering
@@ -24,7 +35,9 @@ Supports filtering, sorting, icons, metadata display, and export to text files.
 - Sorting by name, size, or modified date
 - Export output to files
 - Optional icons and metadata display
+
 ## 🚀 Installation
+
 1. **Clone the repository**
 ```bash
 git clone https://github.com/AmirmasoudCS/Tree-Printer.git
@@ -33,7 +46,9 @@ git clone https://github.com/AmirmasoudCS/Tree-Printer.git
 ```bash
 pip install .
 ```
+
 ## ⌨️ Usage
+
 **The examples below use `tp`, but `tree-printer` works identically.**
 1. **Print *current* directory:**
 ```bash
@@ -99,6 +114,7 @@ or:
 ```bash
 tp -st modified
 ```
+
 ## ⚙️ CLI Options
 | Full Command | Alias | Description |
 |:---:|:---:|:---:|
@@ -113,7 +129,9 @@ tp -st modified
 | `--modified` | `-m` | Show the modified date of files |
 | `--icons` | `-i` | Show icons of each file or directory |
 | `--sort` | `-st` | Sort entries by name, size or modified date |
+
 ## 📁 Project Structure
+
 ```
 📁
 ├── 📁 tree_printer
@@ -129,7 +147,9 @@ tp -st modified
 ├── ⚙️ pyproject.toml
 └── 📘 README.md
 ```
+
 ## 📌 Example Output
+
 ```bash
 tp .
 ```
@@ -195,5 +215,6 @@ tp --sort modified --modified --icons
 ├── 🐍 main.py (2026-05-12 19:30)
 └── ⚖️ LICENSE (2026-05-11 15:11)
 ```
+
 ## ⚖️ License
 **Licensed under the MIT License. See [LICENSE](LICENSE) for details.**
