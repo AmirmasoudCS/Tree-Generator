@@ -129,6 +129,7 @@ tp -st modified
 | `--modified` | `-m` | Show the modified date of files |
 | `--icons` | `-i` | Show icons of each file or directory |
 | `--sort` | `-st` | Sort entries by name, size or modified date |
+| `--version` | `-v` | Shows the current version of the program |
 
 ## 📁 Project Structure
 
