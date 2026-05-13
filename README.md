@@ -130,6 +130,9 @@ tp -st modified
 └── 📘 README.md
 ```
 ## 📌 Example Output
+```bash
+tp .
+```
 ```text
 ├── project
 │   ├── __init__.py
