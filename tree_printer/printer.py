@@ -50,10 +50,19 @@ class TreePrinter:
 
     def build_tree(self, path: Path | None = None) -> TreeNode:
         path = path or self.root
-
+        size = None
+        modified = None
+        if self.show_size or self.show_modified:
+            stat = path.stat()
+            if self.show_size and path.is_file():
+                size = stat.st_size
+            if self.show_modified:
+                modified = stat.st_mtime
         node = TreeNode(
             name=path.name,
             is_dir=path.is_dir(),
+                size=size,
+                modified=modified
         )
 
         if path.is_dir():
