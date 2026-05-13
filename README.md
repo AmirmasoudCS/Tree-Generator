@@ -76,6 +76,8 @@ tp -do
 | `--exclude-dirs` | `-ed` |Exclude directories by name|
 |`--exclude-files`|`ef`|Exclude files by name|
 |`--exclude-suffixes`|`-ef`|Exclude files by suffixes|
+|`--size`|`-s`|Show the size of files |
+|`--modified`|`-m`|Show the modified date of files|
 ## 📁 Project Structure
 ```
 ├── tree_printer
