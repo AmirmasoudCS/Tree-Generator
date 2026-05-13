@@ -81,17 +81,19 @@ tp -do
 |`--icons`|`-i`|Show icons of each file or directory|
 ## 📁 Project Structure
 ```
-├── tree_printer
-│   ├── __init__.py
-│   ├── cli.py
-│   ├── config.py
-│   ├── formatter.py
-│   ├── models.py
-│   └── printer.py
-├── LICENSE
-├── main.py
-├── pyproject.toml
-└── README.md
+📁
+├── 📁 tree_printer
+│   ├── 🐍 __init__.py
+│   ├── 🐍 cli.py
+│   ├── 🐍 config.py
+│   ├── 🐍 formatter.py
+│   ├── 🐍 icons.py
+│   ├── 🐍 models.py
+│   └── 🐍 printer.py
+├── ⚖️ LICENSE
+├── 🐍 main.py
+├── ⚙️ pyproject.toml
+└── 📘 README.md
 ```
 ## 📌 Example Output
 ```text
