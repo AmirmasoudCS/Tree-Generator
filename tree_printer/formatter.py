@@ -1,7 +1,8 @@
 from datetime import datetime
 from tree_printer.models import TreeNode
 from pathlib import Path
-from .icons import FILE_ICONS as fi
+from .icons import FILE_ICONS, DEFAULT_FILE_ICON
+
 class TreeFormatter:
     def __init__(
             self,
@@ -22,7 +23,7 @@ class TreeFormatter:
     def format(
             self,
             node : TreeNode,
-            prefix : str="",
+            prefix : str = "",
             depth : int = 0,
             max_depth : int | None = None
     ) -> list[str]:
@@ -52,4 +53,4 @@ class TreeFormatter:
         if node.is_dir:
             return "📁 "
         suffix = Path(node.name).suffix.lower()
-        return fi.get(suffix, "📄 ")
+        return FILE_ICONS.get(suffix, DEFAULT_FILE_ICON)
