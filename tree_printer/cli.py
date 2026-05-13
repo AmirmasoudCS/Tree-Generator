@@ -1,4 +1,6 @@
 import argparse
+from importlib.metadata import version
+__version__ = version("tree-printer")
 from .printer import  TreePrinter
 from .formatter import TreeFormatter
 def run() -> None:
@@ -80,6 +82,12 @@ def run() -> None:
         choices=["name", "size", "modified"],
         default = "name",
         help = "Sort files by name, size or modified dat"
+    )
+    parser.add_argument(
+        "--version",
+        "-v",
+        action="version",
+        version=f"tree-printer {__version__}"
     )
     args = parser.parse_args()
     printer = TreePrinter(
