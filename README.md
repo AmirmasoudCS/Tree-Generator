@@ -101,7 +101,7 @@ tp -st modified
 ```
 ## ⚙️ CLI Options
 | Full Command | Alias | Description |
-|---|---|---|
+|:---:|:---:|:---:|
 | `--max-depth` | `-md` | Limit recursion depth |
 | `--show-hidden` | `-sh` | Include hidden files |
 | `--output` | `-o` | Save output to a file |
