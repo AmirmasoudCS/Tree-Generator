@@ -56,6 +56,18 @@ def run() -> None:
         default=None,
         help="Exclude files by suffixes"
     )
+    parser.add_argument(
+        "--size",
+        "-s",
+        action="store_true",
+        help="Show file size"
+    )
+    parser.add_argument(
+        "--modified",
+        "-m",
+        action="store_true",
+        help="Show last modified time"
+    )
     args = parser.parse_args()
     printer = TreePrinter(
                         root_path=args.path,
@@ -63,7 +75,9 @@ def run() -> None:
                         dirs_only=args.dirs_only,
                         exclude_dirs=args.exclude_dirs,
                         exclude_files=args.exclude_files,
-                        exclude_suffixes=args.exclude_suffixes
+                        exclude_suffixes=args.exclude_suffixes,
+                        show_size=args.size,
+                        show_modified=args.modified
                         )
     formatter = TreeFormatter()
     tree = printer.build_tree()
