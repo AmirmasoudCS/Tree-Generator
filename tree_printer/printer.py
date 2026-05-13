@@ -19,9 +19,9 @@ class TreePrinter:
         self.show_hidden = show_hidden
         self.dirs_only = dirs_only
 
-        self.exclude_dirs = exclude_dirs or DEFAULT_EXCLUDE_DIRS
-        self.exclude_files = exclude_files or DEFAULT_EXCLUDE_FILES
-        self.exclude_suffixes = exclude_suffixes or DEFAULT_EXCLUDE_SUFFIXES
+        self.exclude_dirs = (DEFAULT_EXCLUDE_DIRS if exclude_dirs is None else exclude_dirs)
+        self.exclude_files = (DEFAULT_EXCLUDE_FILES if exclude_files is None else exclude_files)
+        self.exclude_suffixes = (DEFAULT_EXCLUDE_SUFFIXES if exclude_suffixes is None else exclude_suffixes)
 
     def should_exclude(self, path: Path) -> bool:
         return (
