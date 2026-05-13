@@ -13,11 +13,15 @@ class TreePrinter:
         exclude_files : list[str] | None = None,
         exclude_suffixes : list[str] | None = None,
         show_hidden : bool = False,
-        dirs_only : bool = False
+        dirs_only : bool = False,
+        show_size : bool = False,
+        show_modified : bool = False
     ):
         self.root = Path(root_path)
         self.show_hidden = show_hidden
         self.dirs_only = dirs_only
+        self.show_size = show_size
+        self.show_modified = show_modified
 
         self.exclude_dirs = (DEFAULT_EXCLUDE_DIRS if exclude_dirs is None else exclude_dirs)
         self.exclude_files = (DEFAULT_EXCLUDE_FILES if exclude_files is None else exclude_files)
