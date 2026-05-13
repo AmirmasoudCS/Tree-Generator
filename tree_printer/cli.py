@@ -35,11 +35,35 @@ def run() -> None:
         action="store_true",
         help="Show directories only"
     )
+    parser.add_argument(
+        "--exclude-dirs",
+        "-ed",
+        nargs="+",
+        default=None,
+        help="Exclude directories by name"
+    )
+    parser.add_argument(
+        "--exclude-files",
+        "-ef",
+        nargs="+",
+        default=None,
+        help="Exclude files by name"
+    )
+    parser.add_argument(
+        "--exclude-suffixes",
+        "-es",
+        nargs="+",
+        default=None,
+        help="Exclude files by suffixes"
+    )
     args = parser.parse_args()
     printer = TreePrinter(
                         root_path=args.path,
                         show_hidden=args.show_hidden,
-                        dirs_only=args.dirs_only
+                        dirs_only=args.dirs_only,
+                        exclude_dirs=args.exclude_dirs,
+                        exclude_files=args.exclude_files,
+                        exclude_suffixes=args.exclude_suffixes
                         )
     formatter = TreeFormatter()
     tree = printer.build_tree()
