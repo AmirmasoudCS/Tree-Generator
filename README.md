@@ -78,6 +78,7 @@ tp -do
 |`--exclude-suffixes`|`-ef`|Exclude files by suffixes|
 |`--size`|`-s`|Show the size of files |
 |`--modified`|`-m`|Show the modified date of files|
+|`--icons`|`-i`|Show icons of each file or directory|
 ## 📁 Project Structure
 ```
 ├── tree_printer
