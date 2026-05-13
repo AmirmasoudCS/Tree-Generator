@@ -66,6 +66,30 @@ tree-printer --dirs-only
 ```bash
 tp -do
 ```
+7. Sort folder by name:
+```bash
+tp --sort name
+```
+or:
+```bash
+tp -st name
+```
+8. Sort folder by size:
+```bash
+tree-printer --sort size
+```
+or:
+```bash
+tp -st size
+```
+9. Sort folder by modified date:
+```bash
+tree-printer --sort modified
+```
+or:
+```bash
+tp -st modified
+```
 ## ⚙️ CLI Options
 | Full Command | Alias | Description |
 |---|---|---|
@@ -75,10 +99,11 @@ tp -do
 | `--dirs-only` | `-do` | Prints only directories |
 | `--exclude-dirs` | `-ed` |Exclude directories by name|
 |`--exclude-files`|`ef`|Exclude files by name|
-|`--exclude-suffixes`|`-ef`|Exclude files by suffixes|
+|`--exclude-suffixes`|`-es`|Exclude files by suffixes|
 |`--size`|`-s`|Show the size of files |
 |`--modified`|`-m`|Show the modified date of files|
 |`--icons`|`-i`|Show icons of each file or directory|
+|`--sort`|`-st`|Sort entries by name, size or modified date|
 ## 📁 Project Structure
 ```
 📁
