@@ -16,5 +16,6 @@ FILE_ICONS = {
     ".html": "🌐 ",
     ".css": "🎨 ",
     ".js": "✨ ",
+    ".toml" : "⚙️ "
 }
 DEFAULT_FILE_ICON = "📄 "

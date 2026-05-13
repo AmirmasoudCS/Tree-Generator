@@ -52,5 +52,8 @@ class TreeFormatter:
             return ""
         if node.is_dir:
             return "📁 "
+        name = node.name.lower()
+        if name.startswith == "license":
+            return "⚖️ "
         suffix = Path(node.name).suffix.lower()
         return FILE_ICONS.get(suffix, DEFAULT_FILE_ICON)
