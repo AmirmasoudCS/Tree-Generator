@@ -3,8 +3,8 @@ from .config import DEFAULT_EXCLUDE_DIRS
 from .config import DEFAULT_EXCLUDE_FILES 
 from .config import DEFAULT_EXCLUDE_SUFFIXES 
 from .models import TreeNode
-
-
+from .formatter import TreeFormatter
+from rich.console import Console
 class TreePrinter:
     def __init__(
         self,
@@ -28,14 +28,25 @@ class TreePrinter:
         self.exclude_dirs = (DEFAULT_EXCLUDE_DIRS if exclude_dirs is None else exclude_dirs)
         self.exclude_files = (DEFAULT_EXCLUDE_FILES if exclude_files is None else exclude_files)
         self.exclude_suffixes = (DEFAULT_EXCLUDE_SUFFIXES if exclude_suffixes is None else exclude_suffixes)
-
+        self.console = Console()
     def should_exclude(self, path: Path) -> bool:
         return (
             path.name in self.exclude_dirs
             or path.name in self.exclude_files
             or path.suffix in self.exclude_suffixes
         )
-
+    def render(
+        self,
+        show_icons: bool = False,
+        theme_name: str = "default",
+        max_depth: int | None = None,
+        no_color: bool = False
+    ) -> None:
+        root = self.build_tree()
+        formatter = TreeFormatter(show_icons=show_icons, theme_name=theme_name)
+        lines = formatter.format(root, max_depth=max_depth)
+        for line in lines:
+            self.console.print(line)
     def get_items(self, path: Path) -> list[Path]:
         return sorted(
             [
