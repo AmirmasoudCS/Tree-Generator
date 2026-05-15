@@ -1,5 +1,7 @@
 import argparse
 from importlib.metadata import version
+from rich.console import Console
+from .themes import THEMES
 __version__ = version("tree-printer")
 from .printer import  TreePrinter
 from .formatter import TreeFormatter
@@ -81,13 +83,26 @@ def run() -> None:
         "-st",
         choices=["name", "size", "modified"],
         default = "name",
-        help = "Sort files by name, size or modified dat"
+        help = "Sort files by name, size or modified date"
     )
     parser.add_argument(
         "--version",
         "-v",
         action="version",
         version=f"tree-printer {__version__}"
+    )
+    parser.add_argument(
+        "--theme",
+        "-th",
+        default="default",
+        choices=THEMES.keys(),
+        help = "Choose the color theme"
+    )
+    parser.add_argument(
+        "--no-color",
+        "-nc",
+        action="store_true",
+        help="Disable colored output"
     )
     args = parser.parse_args()
     printer = TreePrinter(
@@ -101,14 +116,16 @@ def run() -> None:
                         show_modified=args.modified,
                         sort_by=args.sort
                         )
-    formatter = TreeFormatter(show_icons=args.icons)
+    formatter = TreeFormatter(show_icons=args.icons, theme_name=args.theme)
     tree = printer.build_tree()
     lines = formatter.format(tree, max_depth=args.max_depth)
-    output = "\n".join(lines)
     if args.output:
+        text_lines = [line.plain for line in lines] 
         with open(args.output, "w", encoding="utf-8") as file:
-            file.write(output)
+            file.write("\n".join(text_lines))
         print(f"Tree written into {args.output}")
     else:
-        print(output)
+        console = Console(no_color=args.no_color)
+        for line in lines:
+            console.print(line)
     
