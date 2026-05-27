@@ -130,6 +130,8 @@ tp -st modified
 | `--icons` | `-i` | Show icons of each file or directory |
 | `--sort` | `-st` | Sort entries by name, size or modified date |
 | `--version` | `-v` | Shows the current version of the program |
+| `--theme` | `-th` | Choose the color theme |
+| `--no-color` | `-nc` | No theme color |
 
 ## 📁 Project Structure
 
@@ -216,6 +218,11 @@ tp --sort modified --modified --icons
 ├── 🐍 main.py (2026-05-12 19:30)
 └── ⚖️ LICENSE (2026-05-11 15:11)
 ```
-
+```bash
+tp --theme sunset
+```
+```text
+![alt text](./images/themeImage1.png)
+```
 ## ⚖️ License
 **Licensed under the MIT License. See [LICENSE](LICENSE) for details.**
