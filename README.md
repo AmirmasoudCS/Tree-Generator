@@ -137,14 +137,18 @@ tp -st modified
 
 ```
 📁
+├── 📁 images
+│   └── 🖼️ themeImage1.png
 ├── 📁 tree_printer
 │   ├── 🐍 __init__.py
 │   ├── 🐍 cli.py
 │   ├── 🐍 config.py
+│   ├── 🐍 file_types.py
 │   ├── 🐍 formatter.py
 │   ├── 🐍 icons.py
 │   ├── 🐍 models.py
-│   └── 🐍 printer.py
+│   ├── 🐍 printer.py
+│   └── 🐍 themes.py
 ├── ⚖️ LICENSE
 ├── 🐍 main.py
 ├── ⚙️ pyproject.toml
