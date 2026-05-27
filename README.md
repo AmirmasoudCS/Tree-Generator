@@ -221,8 +221,7 @@ tp --sort modified --modified --icons
 ```bash
 tp --theme sunset
 ```
-```text
 ![alt text](images/themeImage1.png)
-```
+
 ## ⚖️ License
 **Licensed under the MIT License. See [LICENSE](LICENSE) for details.**
