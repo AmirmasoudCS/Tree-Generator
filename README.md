@@ -155,7 +155,7 @@ tp -st modified
 └── 📘 README.md
 ```
 
-## 📌 Example Output
+## 📌 Example Outputs
 
 ```bash
 tp .
