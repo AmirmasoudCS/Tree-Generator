@@ -222,7 +222,7 @@ tp --sort modified --modified --icons
 tp --theme sunset
 ```
 ```text
-![alt text](./images/themeImage1.png)
+![alt text](images/themeImage1.png)
 ```
 ## ⚖️ License
 **Licensed under the MIT License. See [LICENSE](LICENSE) for details.**
