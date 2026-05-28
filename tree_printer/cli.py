@@ -104,6 +104,12 @@ def run() -> None:
         action="store_true",
         help="Disable colored output"
     )
+    parser.add_argument(
+        "--gitignore",
+        "-gi",
+        action="store_true",
+        help="Respect .gitignore file patterns"
+    )
     args = parser.parse_args()
     printer = TreePrinter(
                         root_path=args.path,
@@ -114,7 +120,8 @@ def run() -> None:
                         exclude_suffixes=args.exclude_suffixes,
                         show_size=args.size,
                         show_modified=args.modified,
-                        sort_by=args.sort
+                        sort_by=args.sort,
+                        use_gitignore=args.gitignore
                         )
     formatter = TreeFormatter(show_icons=args.icons, theme_name=args.theme)
     tree = printer.build_tree()
