@@ -1,4 +1,5 @@
 from pathlib import Path
+import pathspec
 from .config import DEFAULT_EXCLUDE_DIRS 
 from .config import DEFAULT_EXCLUDE_FILES 
 from .config import DEFAULT_EXCLUDE_SUFFIXES 
@@ -16,9 +17,12 @@ class TreePrinter:
         dirs_only : bool = False,
         show_size : bool = False,
         show_modified : bool = False,
-        sort_by : str = "name"
+        sort_by : str = "name",
+        use_gitignore : bool = False
     ):
         self.root = Path(root_path)
+        self.use_gitignore = use_gitignore
+        self.gitignore_spec = self.load_gitignore() if use_gitignore else None
         self.show_hidden = show_hidden
         self.dirs_only = dirs_only
         self.show_size = show_size
@@ -30,11 +34,34 @@ class TreePrinter:
         self.exclude_suffixes = (DEFAULT_EXCLUDE_SUFFIXES if exclude_suffixes is None else exclude_suffixes)
         self.console = Console()
     def should_exclude(self, path: Path) -> bool:
-        return (
+        if(
             path.name in self.exclude_dirs
             or path.name in self.exclude_files
             or path.suffix in self.exclude_suffixes
-        )
+        ):
+            return True
+        spec = getattr(self, "gitignore_spec", None)
+        if spec is not None:
+            try:
+                rel = path.relative_to(self.root)
+            except ValueError:
+                return False
+            rel_str = rel.as_posix()
+            if path.is_dir():
+                rel_str += "/"
+            if spec.match_file(rel_str):
+                return True
+        return False
+    def load_gitignore(self) -> pathspec.PathSpec | None:
+        gitignore_path = self.root/".gitignore"
+        if not gitignore_path.exists():
+            return None
+        try:
+            with open(gitignore_path, "r", encoding="utf-8") as f:
+                return pathspec.PathSpec.from_lines("gitwildmatch", f.readlines())
+        except (OSError, UnicodeDecodeError):
+            return None
+        
     def render(
         self,
         show_icons: bool = False,
