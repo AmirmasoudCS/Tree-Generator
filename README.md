@@ -132,6 +132,7 @@ tp -st modified
 | `--version` | `-v` | Shows the current version of the program |
 | `--theme` | `-th` | Choose the color theme |
 | `--no-color` | `-nc` | No theme color |
+| `--gitignore` | `-gi` | Removes the files in gitignore file |
 
 ## 📁 Project Structure
 
