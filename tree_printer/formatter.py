@@ -22,13 +22,23 @@ class TreeFormatter:
         text = Text(label, style=style)
         metadata = []
         if node.size is not None:
-            metadata.append(f"{node.size} B")
+            metadata.append(self.format_size(node.size))
         if node.modified is not None:
             formatted_date = datetime.fromtimestamp(node.modified).strftime("%Y-%m-%d %H:%M")
             metadata.append(formatted_date)
         if metadata:
             text.append(f" ({' | '.join(metadata)})", style="dim")
         return text
+    def format_size(self, size_in_bytes : int) -> str:
+        if size_in_bytes < 1024:
+            return f"{size_in_bytes} B"
+        units = ["KB", "MB", "GB", "TB", "PB"]
+        size = float(size_in_bytes)
+        for unit in units :
+            size/=1024
+            if size < 1024:
+                return f"{size:.1f} {unit}"
+        return f"{size:.1f} EB"
     def format(
             self,
             node : TreeNode,
