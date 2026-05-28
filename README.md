@@ -191,18 +191,22 @@ tp -i
 tp -s
 ```
 ```text
+├── images
+│   └── themeImage1.png (10.8 KB)
 ├── tree_printer
 │   ├── __init__.py (177 B)
-│   ├── cli.py (3043 B)
+│   ├── cli.py (3.7 KB)
 │   ├── config.py (242 B)
-│   ├── formatter.py (2162 B)
+│   ├── file_types.py (409 B)
+│   ├── formatter.py (3.1 KB)
 │   ├── icons.py (464 B)
 │   ├── models.py (233 B)
-│   └── printer.py (3131 B)
-├── LICENSE (1088 B)
+│   ├── printer.py (3.6 KB)
+│   └── themes.py (4.1 KB)
+├── LICENSE (1.1 KB)
 ├── main.py (71 B)
 ├── pyproject.toml (434 B)
-└── README.md (3796 B)
+└── README.md (5.5 KB)
 ```
 ```bash
 tp --sort modified --modified --icons
