@@ -8,14 +8,20 @@ license = { text = "MIT"}
 authors = [
     { name = "AmirmasoudCS"}
 ]
-
-[build-system]
-requires = ["setuptools>=61.0"]
-build-backend = "setuptools.build_meta"
+dependencies = [
+    "pathspec"
+]
 
 [project.scripts]
 tree-printer = "tree_printer.cli:run"
 tp = "tree_printer.cli:run"
 
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+
 [tool.setuptools.packages.find]
 include = ["tree_printer*"]
+
+
