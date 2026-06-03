@@ -1,4 +1,5 @@
 import argparse
+#from rich_argparse import RichHelpFormatter
 from importlib.metadata import version
 from rich.console import Console
 from .themes import THEMES
