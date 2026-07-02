@@ -9,7 +9,8 @@ authors = [
     { name = "AmirmasoudCS"}
 ]
 dependencies = [
-    "pathspec"
+    "pathspec",
+    "rich"&nbsp;&nbsp;
 ]
 
 [project.scripts]
