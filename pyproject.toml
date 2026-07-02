@@ -10,7 +10,7 @@ authors = [
 ]
 dependencies = [
     "pathspec",
-    "rich"&nbsp;&nbsp;
+    "rich"
 ]
 
 [project.scripts]
