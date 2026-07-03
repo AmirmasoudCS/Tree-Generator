@@ -30,3 +30,11 @@ Homepage = "https://github.com/AmirmasoudCS/Tree-Printer"
 Repository = "https://github.com/AmirmasoudCS/Tree-Printer"
 Issues = "https://github.com/AmirmasoudCS/Tree-Printer/issues"
 
+keywords = [
+    "tree",
+    "cli",
+    "directory",
+    "filesystem",
+    "terminal"
+]
+
