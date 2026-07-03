@@ -25,4 +25,8 @@ build-backend = "setuptools.build_meta"
 [tool.setuptools.packages.find]
 include = ["tree_printer*"]
 
+[project.urls]
+Homepage = "https://github.com/AmirmasoudCS/Tree-Printer"
+Repository = "https://github.com/AmirmasoudCS/Tree-Printer"
+Issues = "https://github.com/AmirmasoudCS/Tree-Printer/issues"
 
