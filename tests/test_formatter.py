@@ -24,3 +24,17 @@ def test_format_lists_root_and_children():
     assert any("main.py" in line for line in lines)
     assert any("README.md" in line for line in lines)
 
+def test_last_child_uses_corner_connector():
+    root = make_node("project", is_dir=True, children=[
+        make_node("a.py"),
+        make_node("b.py"),  # last
+    ])
+
+    formatter = TreeFormatter()
+    lines = [line.plain for line in formatter.format(root)]
+
+    b_line = next(l for l in lines if "b.py" in l)
+    a_line = next(l for l in lines if "a.py" in l)
+
+    assert b_line.startswith("└── ")
+    assert a_line.startswith("├── ")
