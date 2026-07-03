@@ -52,3 +52,17 @@ def test_nested_dir_gets_indented_prefix():
     main_line = next(l for l in lines if "main.py" in l)
     # src is the only (last) child, so extension is "    " not "│   "
     assert main_line.startswith("    └── ")
+
+def test_max_depth_limits_output():
+    root = make_node("project", is_dir=True, children=[
+        make_node("src", is_dir=True, children=[
+            make_node("main.py"),
+        ]),
+    ])
+
+    formatter = TreeFormatter()
+    lines_full = [line.plain for line in formatter.format(root)]
+    lines_limited = [line.plain for line in formatter.format(root, max_depth=1)]
+
+    assert any("main.py" in line for line in lines_full)
+    assert not any("main.py" in line for line in lines_limited)
