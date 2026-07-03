@@ -80,4 +80,13 @@ def test_no_color_flag():
     parser = build_parser()
     assert parser.parse_args(["-nc"]).no_color is True
 
+def test_run_writes_output_file(tmp_path, monkeypatch):
+    (tmp_path / "file.txt").write_text("")
+    output_file = tmp_path / "out.txt"
+    from tree_printer.cli import run
+    run([str(tmp_path), "--output", str(output_file)])
+    assert output_file.exists()
+    assert "file.txt" in output_file.read_text()
+
+
 
