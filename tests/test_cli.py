@@ -72,4 +72,8 @@ def test_size_and_modified_flags():
     assert args.size is True
     assert args.modified is True
 
+def test_gitignore_flag():
+    parser = build_parser()
+    assert parser.parse_args(["-gi"]).gitignore is True
+
 
