@@ -66,3 +66,7 @@ def test_max_depth_limits_output():
 
     assert any("main.py" in line for line in lines_full)
     assert not any("main.py" in line for line in lines_limited)
+
+def test_format_size_bytes():
+    formatter = TreeFormatter()
+    assert formatter.format_size(500) == "500 B"
