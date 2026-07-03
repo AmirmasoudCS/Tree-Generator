@@ -15,7 +15,7 @@ def test_build_tree_basic_structure(tmp_path):
     assert "src" in names
     assert "README.md" in names
 
-    src_node = next(c for c in root.children if root.children == "src")
+    src_node = next(c for c in root.children if c.name == "src")
     assert src_node.is_dir is True
     assert any(c.name=="main.py" for c in src_node.children)
 
