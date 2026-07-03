@@ -47,3 +47,14 @@ def test_show_hidden_true_includes_dotfiles(tmp_path):
 
     names = [c.name for c in root.children]
     assert ".secret" in names
+
+def test_exclude_dirs(tmp_path):
+    (tmp_path / "node_modules").mkdir()
+    (tmp_path / "app.py").write_text("")
+
+    printer = TreePrinter(root_path=tmp_path, exclude_dirs=["node_modules"])
+    root = printer.build_tree()
+
+    names = [c.name for c in root.children]
+    assert "node_modules" not in names
+    assert "app.py" in names
