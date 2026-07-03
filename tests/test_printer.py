@@ -74,3 +74,14 @@ def test_gitignore_respected(tmp_path):
 def test_no_gitignore_file_does_not_crash(tmp_path):
     printer = TreePrinter(root_path=tmp_path, use_gitignore=True)
     assert printer.gitignore_spec is None
+
+def test_sort_by_name(tmp_path):
+    (tmp_path / "b.txt").write_text("")
+    (tmp_path / "a.txt").write_text("")
+    (tmp_path / "folder").mkdir()
+
+    printer = TreePrinter(root_path=tmp_path, sort_by="name")
+    items = printer.get_items(tmp_path)
+    names = [p.name for p in items]
+
+    assert names == ["folder", "a.txt", "b.txt"]
