@@ -11,3 +11,7 @@ def test_positional_path():
     args = parser.parse_args(["some/folder"])
     assert args.path == "some/folder"
 
+def test_max_depth_long_and_short_flags():
+    parser = build_parser()
+    assert parser.parse_args(["--max-depth", "2"]).max_depth == 2
+    assert parser.parse_args(["-md", "3"]).max_depth == 3
