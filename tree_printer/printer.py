@@ -34,6 +34,13 @@ class TreePrinter:
         self.exclude_suffixes = (DEFAULT_EXCLUDE_SUFFIXES if exclude_suffixes is None else exclude_suffixes)
         self.console = Console()
     def should_exclude(self, path: Path) -> bool:
+        if path.is_dir() and path.name in self.exclude_dirs:
+            return True
+        if path.is_file() and path.name in self.exclude_files:
+            return True
+        if path.is_file() and path.suffix in self.exclude_suffixes:
+            return True
+
         spec = getattr(self, "gitignore_spec", None)
         if spec is not None:
             try:
