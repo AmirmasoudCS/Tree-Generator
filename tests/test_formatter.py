@@ -107,3 +107,8 @@ def test_icons_on_for_folder():
     node = make_node("src", is_dir=True)
     formatter = TreeFormatter(show_icons=True)
     assert formatter.get_icon(node) == "📁 "
+
+def test_icons_on_for_license_file():
+    node = make_node("LICENSE")
+    formatter = TreeFormatter(show_icons=True)
+    assert formatter.get_icon(node) == "⚖️ "
