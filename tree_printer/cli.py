@@ -6,7 +6,9 @@ from .themes import THEMES
 __version__ = version("tree-printer")
 from .printer import  TreePrinter
 from .formatter import TreeFormatter
-def run() -> None:
+
+
+def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(
         description="Generate and print directory tree structures"
     )
@@ -111,7 +113,12 @@ def run() -> None:
         action="store_true",
         help="Respect .gitignore file patterns"
     )
-    args = parser.parse_args()
+    return parser
+
+
+def run(argv: list[str] | None = None) -> None:
+    parser = build_parser()
+    args = parser.parse_args(argv)
     printer = TreePrinter(
                         root_path=args.path,
                         show_hidden=args.show_hidden,
@@ -128,7 +135,7 @@ def run() -> None:
     tree = printer.build_tree()
     lines = formatter.format(tree, max_depth=args.max_depth)
     if args.output:
-        text_lines = [line.plain for line in lines] 
+        text_lines = [line.plain for line in lines]
         with open(args.output, "w", encoding="utf-8") as file:
             file.write("\n".join(text_lines))
         print(f"Tree written into {args.output}")
@@ -136,4 +143,3 @@ def run() -> None:
         console = Console(no_color=args.no_color)
         for line in lines:
             console.print(line)
-    
