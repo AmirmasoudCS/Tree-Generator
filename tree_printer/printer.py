@@ -18,7 +18,8 @@ class TreePrinter:
         show_size : bool = False,
         show_modified : bool = False,
         sort_by : str = "name",
-        use_gitignore : bool = False
+        use_gitignore : bool = False,
+        console: Console | None = None,
     ):
         self.root = Path(root_path)
         self.use_gitignore = use_gitignore
@@ -69,12 +70,10 @@ class TreePrinter:
         theme_name: str = "default",
         max_depth: int | None = None,
         no_color: bool = False,
-        console: Console | None = None
     ) -> None:
         root = self.build_tree()
         formatter = TreeFormatter(show_icons=show_icons, theme_name=theme_name)
         lines = formatter.format(root, max_depth=max_depth)
-        self.console = console or Console()
         for line in lines:
             self.console.print(line)
     def get_items(self, path: Path) -> list[Path]:
