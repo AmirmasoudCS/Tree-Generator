@@ -56,6 +56,7 @@ dev = [
     "pytest",
     "pytest-cov",
     "twine",
+    "setuptools-scm[toml]>=8",
 ]
 
 [tool.setuptools_scm]
