@@ -97,3 +97,8 @@ def test_no_metadata_when_absent():
     formatter = TreeFormatter()
     text = formatter.format_metadata(node)
     assert "(" not in text.plain
+
+def test_icons_off_by_default():
+    node = make_node("file.py")
+    formatter = TreeFormatter(show_icons=False)
+    assert formatter.get_icon(node) == ""
