@@ -138,9 +138,14 @@ tp -st modified
 ## 📁 Project Structure
 
 ```
-📁
+📁 
 ├── 📁 images
 │   └── 🖼️ themeImage1.png
+├── 📁 tests
+│   ├── 🐍 __init__.py
+│   ├── 🐍 test_cli.py
+│   ├── 🐍 test_formatter.py
+│   └── 🐍 test_printer.py
 ├── 📁 tree_printer
 │   ├── 🐍 __init__.py
 │   ├── 🐍 cli.py
@@ -154,7 +159,8 @@ tp -st modified
 ├── ⚖️ LICENSE
 ├── 🐍 main.py
 ├── ⚙️ pyproject.toml
-└── 📘 README.md
+├── 📘 README.md
+└── 📝 requirements.txt
 ```
 
 ## 📌 Example Outputs
