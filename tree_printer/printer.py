@@ -60,7 +60,7 @@ class TreePrinter:
             return None
         try:
             with open(gitignore_path, "r", encoding="utf-8") as f:
-                return pathspec.PathSpec.from_lines("gitwildmatch", f.readlines())
+                return pathspec.PathSpec.from_lines("gitignore", f.readlines())  # was "gitwildmatch"
         except (OSError, UnicodeDecodeError):
             return None
         
