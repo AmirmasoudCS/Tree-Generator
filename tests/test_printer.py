@@ -1,4 +1,6 @@
 from tree_printer.printer import TreePrinter
+import io
+from rich.console import Console
 
 def test_build_tree_basic_structure(tmp_path):
     # Building a small fake project
@@ -114,3 +116,13 @@ def test_show_size_only_on_files_not_dirs(tmp_path):
 
     assert file_node.size == 5
     assert dir_node.size is None
+
+def test_render_outputs_tree(tmp_path):
+    (tmp_path / "file.txt").write_text("")
+    buffer = io.StringIO()
+    printer = TreePrinter(root_path=tmp_path, console=Console(file=buffer))
+
+    printer.render()
+
+    output = buffer.getvalue()
+    assert "file.txt" in output
