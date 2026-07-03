@@ -43,4 +43,9 @@ def test_sort_choices_valid():
     parser = build_parser()
     assert parser.parse_args(["--sort", "size"]).sort == "size"
 
+def test_sort_invalid_choice_errors():
+    parser = build_parser()
+    with pytest.raises(SystemExit):
+        parser.parse_args(["--sort", "not_a_real_option"])
+
 
