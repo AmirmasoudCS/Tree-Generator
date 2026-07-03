@@ -3,6 +3,7 @@
 [![GitHub release](https://img.shields.io/github/v/release/AmirmasoudCS/Tree-Printer)](https://github.com/AmirmasoudCS/Tree-Printer/releases)
 [![License](https://img.shields.io/github/license/AmirmasoudCS/Tree-Printer)](https://github.com/AmirmasoudCS/Tree-Printer/blob/main/LICENSE)
 [![Python 3.10+](https://img.shields.io/badge/python-3.10%2B-blue.svg)](https://www.python.org/downloads/)
+![Tests](https://github.com/AmirmasoudCS/Tree-Printer/actions/workflows/tests.yml/badge.svg)
 
 A Python CLI tool for generating clean and customizable directory tree structures directly from the terminal.
 
