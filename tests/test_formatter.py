@@ -70,3 +70,7 @@ def test_max_depth_limits_output():
 def test_format_size_bytes():
     formatter = TreeFormatter()
     assert formatter.format_size(500) == "500 B"
+
+def test_format_size_kb():
+    formatter = TreeFormatter()
+    assert formatter.format_size(2048) == "2.0 KB"
