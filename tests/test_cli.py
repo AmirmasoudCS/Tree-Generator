@@ -20,3 +20,10 @@ def test_max_depth_default_none():
     parser = build_parser()
     assert parser.parse_args([]).max_depth is None
 
+def test_show_hidden_flag():
+    parser = build_parser()
+    assert parser.parse_args([]).show_hidden is False
+    assert parser.parse_args(["--show-hidden"]).show_hidden is True
+    assert parser.parse_args(["-sh"]).show_hidden is True
+
+
