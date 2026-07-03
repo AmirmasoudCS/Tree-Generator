@@ -52,4 +52,7 @@ def test_sort_default_is_name():
     parser = build_parser()
     assert parser.parse_args([]).sort == "name"
 
-
+def test_theme_default_and_choice():
+    parser = build_parser()
+    assert parser.parse_args([]).theme == "default"
+    assert parser.parse_args(["--theme", "sunset"]).theme == "sunset"
