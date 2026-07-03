@@ -1,0 +1,26 @@
+from tree_printer.models import TreeNode
+from tree_printer.formatter import TreeFormatter
+
+def make_node(name, is_dir=False, children=None, size=None, modified=None):
+    return TreeNode(
+        name=name,
+        is_dir=is_dir,
+        children=children or [],
+        size=size,
+        modified=modified,
+    )
+
+def test_format_lists_root_and_children():
+    root = make_node("project", is_dir=True, children=[
+        make_node("main.py"),
+        make_node("README.md"),
+    ])
+
+    formatter = TreeFormatter()
+    lines = [line.plain for line in formatter.format(root)]
+
+    # root line + 2 children
+    assert any("project" in line for line in lines)
+    assert any("main.py" in line for line in lines)
+    assert any("README.md" in line for line in lines)
+
