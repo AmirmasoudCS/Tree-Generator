@@ -102,3 +102,8 @@ def test_icons_off_by_default():
     node = make_node("file.py")
     formatter = TreeFormatter(show_icons=False)
     assert formatter.get_icon(node) == ""
+
+def test_icons_on_for_folder():
+    node = make_node("src", is_dir=True)
+    formatter = TreeFormatter(show_icons=True)
+    assert formatter.get_icon(node) == "📁 "
