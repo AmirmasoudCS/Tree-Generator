@@ -47,3 +47,10 @@ Homepage = "https://github.com/AmirmasoudCS/Tree-Printer"
 Repository = "https://github.com/AmirmasoudCS/Tree-Printer"
 Issues = "https://github.com/AmirmasoudCS/Tree-Printer/issues"
 
+[project.optional-dependencies]
+dev = [
+    "build",
+    "pytest",
+    "pytest-cov",
+    "twine",
+]
