@@ -30,4 +30,9 @@ def test_dirs_only_flag():
     parser = build_parser()
     assert parser.parse_args(["-do"]).dirs_only is True
 
+def test_exclude_dirs_accepts_multiple_values():
+    parser = build_parser()
+    args = parser.parse_args(["--exclude-dirs", "node_modules", ".git"])
+    assert args.exclude_dirs == ["node_modules", ".git"]
+
 
