@@ -1,12 +1,16 @@
-name: Build Release
+name: Release
 
 on:
   push:
     tags:
       - "v*"
 
+permissions:
+  contents: write
+
 jobs:
-  build:
+  release:
+    name: Build and Create Release
     runs-on: ubuntu-latest
 
     steps:
@@ -29,14 +33,16 @@ jobs:
       - name: Run tests
         run: pytest
 
-      - name: Build package
+      - name: Build distributions
         run: python -m build
 
-      - name: Verify package
+      - name: Verify distributions
         run: python -m twine check dist/*
 
-      - name: Upload distribution artifacts
-        uses: actions/upload-artifact@v4
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v2
         with:
-          name: tree-printer-distributions
-          path: dist/
+          generate_release_notes: true
+          files: |
+            dist/*.whl
+            dist/*.tar.gz
