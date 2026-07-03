@@ -68,11 +68,13 @@ class TreePrinter:
         show_icons: bool = False,
         theme_name: str = "default",
         max_depth: int | None = None,
-        no_color: bool = False
+        no_color: bool = False,
+        console: Console | None = None
     ) -> None:
         root = self.build_tree()
         formatter = TreeFormatter(show_icons=show_icons, theme_name=theme_name)
         lines = formatter.format(root, max_depth=max_depth)
+        self.console = console or Console()
         for line in lines:
             self.console.print(line)
     def get_items(self, path: Path) -> list[Path]:
