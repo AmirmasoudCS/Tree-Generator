@@ -118,3 +118,7 @@ def test_unknown_theme_falls_back_to_default():
     assert formatter.theme == formatter.theme  # sanity: doesn't crash
     from tree_printer.themes import THEMES
     assert formatter.theme == THEMES["default"]
+
+def test_format_size_boundary_exactly_1024():
+       formatter = TreeFormatter()
+       assert formatter.format_size(1024) == "1.0 KB"
