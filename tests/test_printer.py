@@ -16,3 +16,14 @@ def test_build_tree_basic_structure(tmp_path):
     src_node = next(c for c in root.children if root.children == "src")
     assert src_node.is_dir is True
     assert any(c.name=="main.py" for c in src_node.children)
+
+def test_dirs_only_excludes_files(tmp_path):
+    (tmp_path / "folder").mkdir()
+    (tmp_path / "file.txt").write_text("")
+
+    printer = TreePrinter(root_path=tmp_path, dirs_only=True)
+    root = printer.build_tree()
+
+    names = [c.name for c in root.children]
+    assert "folder" in names
+    assert "file.txt" not in names
