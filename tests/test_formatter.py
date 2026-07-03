@@ -78,3 +78,9 @@ def test_format_size_kb():
 def test_format_size_mb():
     formatter = TreeFormatter()
     assert formatter.format_size(5 * 1024 * 1024) == "5.0 MB"
+
+def test_metadata_appended_when_size_present():
+    node = make_node("file.txt", size=1024)
+    formatter = TreeFormatter()
+    text = formatter.format_metadata(node)
+    assert "1.0 KB" in text.plain
