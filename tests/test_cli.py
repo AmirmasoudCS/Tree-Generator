@@ -26,4 +26,8 @@ def test_show_hidden_flag():
     assert parser.parse_args(["--show-hidden"]).show_hidden is True
     assert parser.parse_args(["-sh"]).show_hidden is True
 
+def test_dirs_only_flag():
+    parser = build_parser()
+    assert parser.parse_args(["-do"]).dirs_only is True
+
 
