@@ -48,4 +48,8 @@ def test_sort_invalid_choice_errors():
     with pytest.raises(SystemExit):
         parser.parse_args(["--sort", "not_a_real_option"])
 
+def test_sort_default_is_name():
+    parser = build_parser()
+    assert parser.parse_args([]).sort == "name"
+
 
