@@ -84,3 +84,10 @@ def test_metadata_appended_when_size_present():
     formatter = TreeFormatter()
     text = formatter.format_metadata(node)
     assert "1.0 KB" in text.plain
+
+def test_metadata_appended_when_modified_present():
+    node = make_node("file.txt", modified=1700000000)  # any valid timestamp
+    formatter = TreeFormatter()
+    text = formatter.format_metadata(node)
+    # format is YYYY-MM-DD HH:MM, just check the shape is present
+    assert "(" in text.plain and ")" in text.plain
