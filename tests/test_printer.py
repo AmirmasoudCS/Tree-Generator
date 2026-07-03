@@ -27,3 +27,14 @@ def test_dirs_only_excludes_files(tmp_path):
     names = [c.name for c in root.children]
     assert "folder" in names
     assert "file.txt" not in names
+
+def test_show_hidden_false_by_default(tmp_path):
+    (tmp_path / ".secret").write_text("")
+    (tmp_path / "visible.txt").write_text("")
+
+    printer = TreePrinter(root_path=tmp_path)
+    root = printer.build_tree()
+
+    names = [c.name for c in root.children]
+    assert ".secret" not in names
+    assert "visible.txt" in names
