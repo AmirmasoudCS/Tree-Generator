@@ -56,3 +56,10 @@ def test_theme_default_and_choice():
     parser = build_parser()
     assert parser.parse_args([]).theme == "default"
     assert parser.parse_args(["--theme", "sunset"]).theme == "sunset"
+
+def test_output_flag():
+    parser = build_parser()
+    args = parser.parse_args(["--output", "tree.txt"])
+    assert args.output == "tree.txt"
+
+
