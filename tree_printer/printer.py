@@ -33,7 +33,7 @@ class TreePrinter:
         self.exclude_dirs = (DEFAULT_EXCLUDE_DIRS if exclude_dirs is None else exclude_dirs)
         self.exclude_files = (DEFAULT_EXCLUDE_FILES if exclude_files is None else exclude_files)
         self.exclude_suffixes = (DEFAULT_EXCLUDE_SUFFIXES if exclude_suffixes is None else exclude_suffixes)
-        self.console = Console()
+        self.console = console or Console()
     def should_exclude(self, path: Path) -> bool:
         if path.is_dir() and path.name in self.exclude_dirs:
             return True
