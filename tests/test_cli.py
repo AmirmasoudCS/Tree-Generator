@@ -76,4 +76,8 @@ def test_gitignore_flag():
     parser = build_parser()
     assert parser.parse_args(["-gi"]).gitignore is True
 
+def test_no_color_flag():
+    parser = build_parser()
+    assert parser.parse_args(["-nc"]).no_color is True
+
 
