@@ -74,3 +74,7 @@ def test_format_size_bytes():
 def test_format_size_kb():
     formatter = TreeFormatter()
     assert formatter.format_size(2048) == "2.0 KB"
+
+def test_format_size_mb():
+    formatter = TreeFormatter()
+    assert formatter.format_size(5 * 1024 * 1024) == "5.0 MB"
