@@ -39,4 +39,8 @@ def test_exclude_dirs_default_none():
     parser = build_parser()
     assert parser.parse_args([]).exclude_dirs is None
 
+def test_sort_choices_valid():
+    parser = build_parser()
+    assert parser.parse_args(["--sort", "size"]).sort == "size"
+
 
