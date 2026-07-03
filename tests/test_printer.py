@@ -101,3 +101,16 @@ def test_empty_directory(tmp_path):
     printer = TreePrinter(root_path=tmp_path)
     root = printer.build_tree()
     assert root.children == []
+
+def test_show_size_only_on_files_not_dirs(tmp_path):
+    (tmp_path / "folder").mkdir()
+    (tmp_path / "file.txt").write_text("hello")
+
+    printer = TreePrinter(root_path=tmp_path, show_size=True)
+    root = printer.build_tree()
+
+    file_node = next(c for c in root.children if c.name == "file.txt")
+    dir_node = next(c for c in root.children if c.name == "folder")
+
+    assert file_node.size == 5
+    assert dir_node.size is None
