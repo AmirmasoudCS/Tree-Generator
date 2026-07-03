@@ -112,3 +112,9 @@ def test_icons_on_for_license_file():
     node = make_node("LICENSE")
     formatter = TreeFormatter(show_icons=True)
     assert formatter.get_icon(node) == "⚖️ "
+
+def test_unknown_theme_falls_back_to_default():
+    formatter = TreeFormatter(theme_name="not_a_real_theme")
+    assert formatter.theme == formatter.theme  # sanity: doesn't crash
+    from tree_printer.themes import THEMES
+    assert formatter.theme == THEMES["default"]
