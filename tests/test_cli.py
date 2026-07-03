@@ -62,4 +62,8 @@ def test_output_flag():
     args = parser.parse_args(["--output", "tree.txt"])
     assert args.output == "tree.txt"
 
+def test_icons_flag_short():
+    parser = build_parser()
+    assert parser.parse_args(["-i"]).icons is True
+
 
