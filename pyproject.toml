@@ -2,7 +2,7 @@
 name = "tree-printer"
 dynamic = ["version"]
 description = "A Python CLI tool for generating clean directory tree structures."
-readme = "docs/README.md"
+readme = "README.md"
 requires-python = ">=3.10"
 license = "MIT"
 authors = [
