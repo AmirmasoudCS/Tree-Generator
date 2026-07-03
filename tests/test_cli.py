@@ -66,4 +66,10 @@ def test_icons_flag_short():
     parser = build_parser()
     assert parser.parse_args(["-i"]).icons is True
 
+def test_size_and_modified_flags():
+    parser = build_parser()
+    args = parser.parse_args(["-s", "-m"])
+    assert args.size is True
+    assert args.modified is True
+
 
