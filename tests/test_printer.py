@@ -85,3 +85,13 @@ def test_sort_by_name(tmp_path):
     names = [p.name for p in items]
 
     assert names == ["folder", "a.txt", "b.txt"]
+
+def test_sort_by_size(tmp_path):
+    (tmp_path / "small.txt").write_text("a")
+    (tmp_path / "big.txt").write_text("a" * 100)
+
+    printer = TreePrinter(root_path=tmp_path, sort_by="size")
+    items = printer.get_items(tmp_path)
+    names = [p.name for p in items]
+
+    assert names == ["big.txt", "small.txt"] 
