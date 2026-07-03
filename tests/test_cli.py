@@ -35,4 +35,8 @@ def test_exclude_dirs_accepts_multiple_values():
     args = parser.parse_args(["--exclude-dirs", "node_modules", ".git"])
     assert args.exclude_dirs == ["node_modules", ".git"]
 
+def test_exclude_dirs_default_none():
+    parser = build_parser()
+    assert parser.parse_args([]).exclude_dirs is None
+
 
