@@ -233,5 +233,23 @@ tp --theme sunset
 ```
 ![alt text](images/themeImage1.png)
 
+## 🧪 Testing
+
+This project has a pytest test suite covering the core tree-building, formatting, and CLI logic.
+
+**Run the tests:**
+```bash
+pip install pytest
+pytest
+```
+
+**With coverage:**
+```bash
+pip install pytest-cov
+pytest --cov=tree_printer --cov-report=term-missing
+```
+
+Tests run automatically on every push via GitHub Actions (see badge above).
+
 ## ⚖️ License
 **Licensed under the MIT License. See [LICENSE](LICENSE) for details.**
