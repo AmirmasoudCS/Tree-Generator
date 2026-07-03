@@ -38,3 +38,12 @@ def test_show_hidden_false_by_default(tmp_path):
     names = [c.name for c in root.children]
     assert ".secret" not in names
     assert "visible.txt" in names
+
+def test_show_hidden_true_includes_dotfiles(tmp_path):
+    (tmp_path / ".secret").write_text("")
+
+    printer = TreePrinter(root_path=tmp_path, show_hidden=True)
+    root = printer.build_tree()
+
+    names = [c.name for c in root.children]
+    assert ".secret" in names
