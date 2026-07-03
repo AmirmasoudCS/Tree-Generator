@@ -94,4 +94,10 @@ def test_sort_by_size(tmp_path):
     items = printer.get_items(tmp_path)
     names = [p.name for p in items]
 
-    assert names == ["big.txt", "small.txt"] 
+    assert names == ["big.txt", "small.txt"]
+
+# Edge cases
+def test_empty_directory(tmp_path):
+    printer = TreePrinter(root_path=tmp_path)
+    root = printer.build_tree()
+    assert root.children == []
