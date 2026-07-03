@@ -38,3 +38,17 @@ def test_last_child_uses_corner_connector():
 
     assert b_line.startswith("└── ")
     assert a_line.startswith("├── ")
+
+def test_nested_dir_gets_indented_prefix():
+    root = make_node("project", is_dir=True, children=[
+        make_node("src", is_dir=True, children=[
+            make_node("main.py"),
+        ]),
+    ])
+
+    formatter = TreeFormatter()
+    lines = [line.plain for line in formatter.format(root)]
+
+    main_line = next(l for l in lines if "main.py" in l)
+    # src is the only (last) child, so extension is "    " not "│   "
+    assert main_line.startswith("    └── ")
