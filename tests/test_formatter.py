@@ -62,10 +62,11 @@ def test_max_depth_limits_output():
 
     formatter = TreeFormatter()
     lines_full = [line.plain for line in formatter.format(root)]
-    lines_limited = [line.plain for line in formatter.format(root, max_depth=1)]
+    lines_depth0 = [line.plain for line in formatter.format(root, max_depth=0)]
 
     assert any("main.py" in line for line in lines_full)
-    assert not any("main.py" in line for line in lines_limited)
+    assert any("src" in line for line in lines_depth0)       # depth 0 children still shown
+    assert not any("main.py" in line for line in lines_depth0)  # depth 1 excluded
 
 def test_format_size_bytes():
     formatter = TreeFormatter()
