@@ -70,3 +70,7 @@ def test_gitignore_respected(tmp_path):
     names = [c.name for c in root.children]
     assert "debug.log" not in names
     assert "main.py" in names
+
+def test_no_gitignore_file_does_not_crash(tmp_path):
+    printer = TreePrinter(root_path=tmp_path, use_gitignore=True)
+    assert printer.gitignore_spec is None
