@@ -91,3 +91,9 @@ def test_metadata_appended_when_modified_present():
     text = formatter.format_metadata(node)
     # format is YYYY-MM-DD HH:MM, just check the shape is present
     assert "(" in text.plain and ")" in text.plain
+
+def test_no_metadata_when_absent():
+    node = make_node("file.txt")
+    formatter = TreeFormatter()
+    text = formatter.format_metadata(node)
+    assert "(" not in text.plain
