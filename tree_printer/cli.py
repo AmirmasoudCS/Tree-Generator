@@ -3,7 +3,7 @@ import argparse
 from importlib.metadata import version
 from rich.console import Console
 from .themes import THEMES
-__version__ = version("tree-printer")
+__version__ = version("directory-tree-printer")
 from .printer import  TreePrinter
 from .formatter import TreeFormatter
 
