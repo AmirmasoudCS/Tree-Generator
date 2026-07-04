@@ -1,144 +1,245 @@
+````markdown
 # 🌲 Tree Printer
 
-[![GitHub release](https://img.shields.io/github/v/release/AmirmasoudCS/Tree-Printer)](https://github.com/AmirmasoudCS/Tree-Printer/releases)
-[![License](https://img.shields.io/github/license/AmirmasoudCS/Tree-Printer)](https://github.com/AmirmasoudCS/Tree-Printer/blob/main/LICENSE)
-[![Python 3.10+](https://img.shields.io/badge/python-3.10%2B-blue.svg)](https://www.python.org/downloads/)
-![Tests](https://github.com/AmirmasoudCS/Tree-Printer/actions/workflows/tests.yml/badge.svg)
+[![GitHub Release](https://img.shields.io/github/v/release/AmirmasoudCS/Tree-Printer)](https://github.com/AmirmasoudCS/Tree-Printer/releases)
+[![Tests](https://github.com/AmirmasoudCS/Tree-Printer/actions/workflows/tests.yml/badge.svg)](https://github.com/AmirmasoudCS/Tree-Printer/actions/workflows/tests.yml)
+[![License](https://img.shields.io/github/license/AmirmasoudCS/Tree-Printer)](LICENSE)
+[![Python](https://img.shields.io/badge/python-3.10%2B-blue.svg)](https://www.python.org/)
 
-A Python CLI tool for generating clean and customizable directory tree structures directly from the terminal.
+A lightweight and customizable command-line utility for generating beautiful directory tree structures directly from your terminal.
 
-Supports filtering, sorting, icons, metadata display, and export to text files.
+Tree Printer makes it easy to visualize project layouts, document repositories, create examples for documentation, and inspect filesystem structures with optional icons, metadata, filtering, sorting, and color themes.
 
-## 🧰 Requirements
+---
 
-- Python 3.10+
-
-## 👀 Preview
-
-```text
-📁 Project
-├── 📁 tree_printer
-│   ├── 🐍 __init__.py
-│   └── 🐍 logic.py
-├── ⚖️ LICENSE
-├── 🐍 main.py
-├── ⚙️ pyproject.toml
-└── 📘 README.md
-
-```
 ## ✨ Features
 
-- Recursive directory tree generation
-- Configurable file and directory exclusions
-- Hidden file filtering
-- Maximum depth limiting
-- Command-line interface with argparse
-- Sorting by name, size, or modified date
-- Export output to files
-- Optional icons and metadata display
+- 🌳 Generate recursive directory trees
+- 📁 Display directories only
+- 👁️ Show or hide hidden files
+- 🚫 Exclude files, directories, or file extensions
+- 📏 Limit recursion depth
+- 🔤 Sort entries by:
+  - Name
+  - Size
+  - Last modified date
+- 📊 Display file size
+- 🕒 Display modification timestamps
+- 🎨 Multiple color themes
+- 🖼️ Optional file and folder icons
+- 📝 Export output to text files
+- 🚫 Respect `.gitignore`
+- ⚡ Fast and lightweight
+- 🧪 Fully tested with pytest
+- 🔄 Continuous Integration using GitHub Actions
 
-## 🚀 Installation
+---
 
-1. **Clone the repository**
+## 📦 Installation
+
+### From PyPI (Recommended)
+
+```bash
+pip install directory-tree-printer
+````
+
+### From source
+
 ```bash
 git clone https://github.com/AmirmasoudCS/Tree-Printer.git
-```
-2. **Install the project**
-```bash
+
+cd Tree-Printer
+
 pip install .
 ```
 
-## ⌨️ Usage
+---
 
-**The examples below use `tp`, but `tree-printer` works identically.**
-1. **Print *current* directory:**
+## 🚀 Quick Start
+
+Print the current directory
+
 ```bash
-tp . 
+tp .
 ```
-2. **Print a *specific* directory:**
+
+Print another directory
+
 ```bash
-tp goal_directory_path
+tp path/to/project
 ```
-3. ***Limit* recursion depth:**
-```bash
-tp --max-depth 2
-```
-or:
-```bash
-tp . -md 2
-```
-4. **Show *hidden* files:**
-```bash
-tp --show-hidden
-```
-or:
-```bash
-tp -sh
-```
-5. ***Write output* tree to a file instead of printing to the console:**
-```bash
-tp --output tree.txt
-```
-or:
-```bash
-tp -o tree.txt
-```
-6. Write only **directories** in the output tree:
+
+Print only directories
+
 ```bash
 tp --dirs-only
 ```
-or:
+
+Show icons
+
 ```bash
-tp -do
+tp --icons
 ```
-7. Sort entries by name:
+
+Show file sizes
+
 ```bash
-tp --sort name
+tp --size
 ```
-or:
+
+Limit depth
+
 ```bash
-tp -st name
+tp --max-depth 2
 ```
-8. Sort entries by size:
+
+Save output
+
 ```bash
-tp --sort size
+tp --output tree.txt
 ```
-or:
+
+---
+
+## 📖 Examples
+
+### Basic
+
 ```bash
-tp -st size
+tp .
 ```
-9. Sort entries by modified date:
+
+```text
+project
+├── src
+│   ├── main.py
+│   └── utils.py
+├── README.md
+└── pyproject.toml
+```
+
+---
+
+### Icons
+
 ```bash
-tp --sort modified
+tp --icons
 ```
-or:
+
+```text
+📁 project
+├── 📁 src
+│   ├── 🐍 main.py
+│   └── 🐍 utils.py
+├── 📘 README.md
+└── ⚙️ pyproject.toml
+```
+
+---
+
+### File Sizes
+
 ```bash
-tp -st modified
+tp --size
 ```
+
+```text
+README.md (5.8 KB)
+main.py (4.2 KB)
+config.py (831 B)
+```
+
+---
+
+### Modified Dates
+
+```bash
+tp --modified
+```
+
+```text
+README.md (2026-05-12 18:42)
+main.py (2026-05-11 14:30)
+```
+
+---
+
+### Themes
+
+```bash
+tp --theme sunset
+```
+
+![Sunset Theme](images/themeImage1.png)
+
+---
 
 ## ⚙️ CLI Options
-| Full Command | Alias | Description |
-|:---:|:---:|:---:|
-| `--max-depth` | `-md` | Limit recursion depth |
-| `--show-hidden` | `-sh` | Include hidden files |
-| `--output` | `-o` | Save output to a file |
-| `--dirs-only` | `-do` | Prints only directories |
-| `--exclude-dirs` | `-ed` | Exclude directories by name |
-| `--exclude-files` | `-ef` | Exclude files by name |
-| `--exclude-suffixes` | `-es` | Exclude files by suffixes |
-| `--size` | `-s` | Show the size of files |
-| `--modified` | `-m` | Show the modified date of files |
-| `--icons` | `-i` | Show icons of each file or directory |
-| `--sort` | `-st` | Sort entries by name, size or modified date |
-| `--version` | `-v` | Shows the current version of the program |
-| `--theme` | `-th` | Choose the color theme |
-| `--no-color` | `-nc` | No theme color |
-| `--gitignore` | `-gi` | Removes the files in gitignore file |
 
-## 📁 Project Structure
+| Option               | Alias | Description                         |
+| -------------------- | ----- | ----------------------------------- |
+| `--max-depth`        | `-md` | Limit recursion depth               |
+| `--show-hidden`      | `-sh` | Include hidden files                |
+| `--dirs-only`        | `-do` | Show only directories               |
+| `--exclude-dirs`     | `-ed` | Exclude directories                 |
+| `--exclude-files`    | `-ef` | Exclude files                       |
+| `--exclude-suffixes` | `-es` | Exclude file extensions             |
+| `--sort`             | `-st` | Sort by name, size or modified      |
+| `--size`             | `-s`  | Display file sizes                  |
+| `--modified`         | `-m`  | Display modified dates              |
+| `--icons`            | `-i`  | Display icons                       |
+| `--theme`            | `-th` | Select a color theme                |
+| `--no-color`         | `-nc` | Disable colored output              |
+| `--gitignore`        | `-gi` | Ignore files listed in `.gitignore` |
+| `--output`           | `-o`  | Write output to a file              |
+| `--version`          | `-v`  | Show installed version              |
 
+---
+
+## 🧪 Development
+
+Clone the repository
+
+```bash
+git clone https://github.com/AmirmasoudCS/Tree-Printer.git
 ```
-📁 
+
+Install development dependencies
+
+```bash
+pip install -e ".[dev]"
+```
+
+Run the test suite
+
+```bash
+pytest
+```
+
+Run tests with coverage
+
+```bash
+pytest --cov=tree_printer --cov-report=term-missing
+```
+
+Build the package
+
+```bash
+python -m build
+```
+
+Verify the package
+
+```bash
+python -m twine check dist/*
+```
+
+---
+
+## 📂 Project Structure
+
+```text
+ 
 ├── 📁 images
 │   └── 🖼️ themeImage1.png
 ├── 📁 tests
@@ -156,106 +257,55 @@ tp -st modified
 │   ├── 🐍 models.py
 │   ├── 🐍 printer.py
 │   └── 🐍 themes.py
+├── 📘 CHANGELOG.md
 ├── ⚖️ LICENSE
 ├── 🐍 main.py
 ├── ⚙️ pyproject.toml
 ├── 📘 README.md
-└── 📝 requirements.txt
+└── 📝 requirements-dev.txt
 ```
 
-## 📌 Example Outputs
+---
 
-```bash
-tp .
-```
-```text
-├── project
-│   ├── __init__.py
-│   ├── database.py
-│   └── logic.py
-├── main.py
-├── secrets.txt
-└── image.png
-```
-```bash
-tp -i
-```
-```text
-📁
-├── 📁 tree_printer
-│   ├── 🐍 __init__.py
-│   ├── 🐍 cli.py
-│   ├── 🐍 config.py
-│   ├── 🐍 formatter.py
-│   ├── 🐍 icons.py
-│   ├── 🐍 models.py
-│   └── 🐍 printer.py
-├── ⚖️ LICENSE
-├── 🐍 main.py
-├── ⚙️ pyproject.toml
-└── 📘 README.md
-```
-```bash
-tp -s
-```
-```text
-├── images
-│   └── themeImage1.png (10.8 KB)
-├── tree_printer
-│   ├── __init__.py (177 B)
-│   ├── cli.py (3.7 KB)
-│   ├── config.py (242 B)
-│   ├── file_types.py (409 B)
-│   ├── formatter.py (3.1 KB)
-│   ├── icons.py (464 B)
-│   ├── models.py (233 B)
-│   ├── printer.py (3.6 KB)
-│   └── themes.py (4.1 KB)
-├── LICENSE (1.1 KB)
-├── main.py (71 B)
-├── pyproject.toml (434 B)
-└── README.md (5.5 KB)
-```
-```bash
-tp --sort modified --modified --icons
-```
-```text
-📁  (2026-05-12 22:04)
-├── 📁 tree_printer (2026-05-13 11:05)
-│   ├── 🐍 cli.py (2026-05-13 12:04)
-│   ├── 🐍 printer.py (2026-05-13 12:02)
-│   ├── 🐍 formatter.py (2026-05-13 11:16)
-│   ├── 🐍 icons.py (2026-05-13 11:11)
-│   ├── 🐍 models.py (2026-05-13 10:16)
-│   ├── 🐍 config.py (2026-05-12 22:09)
-│   └── 🐍 __init__.py (2026-05-12 19:11)
-├── 📘 README.md (2026-05-13 12:29)
-├── ⚙️ pyproject.toml (2026-05-12 22:03)
-├── 🐍 main.py (2026-05-12 19:30)
-└── ⚖️ LICENSE (2026-05-11 15:11)
-```
-```bash
-tp --theme sunset
-```
-![alt text](images/themeImage1.png)
+## 🛣️ Roadmap
 
-## 🧪 Testing
+Future improvements include:
 
-This project has a pytest test suite covering the core tree-building, formatting, and CLI logic.
+* Additional export formats
+* Custom icon packs
+* More color themes
+* Configuration file support
+* Improved Windows terminal support
+* Performance improvements for very large directories
 
-**Run the tests:**
-```bash
-pip install pytest
-pytest
-```
+Suggestions and pull requests are always welcome.
 
-**With coverage:**
-```bash
-pip install pytest-cov
-pytest --cov=tree_printer --cov-report=term-missing
-```
+---
 
-Tests run automatically on every push via GitHub Actions (see badge above).
+## 🤝 Contributing
 
-## ⚖️ License
-**Licensed under the MIT License. See [LICENSE](LICENSE) for details.**
+Contributions, feature requests, and bug reports are welcome.
+
+If you'd like to contribute:
+
+1. Fork the repository
+2. Create a feature branch
+3. Make your changes
+4. Run the test suite
+5. Submit a Pull Request
+
+---
+
+## 📜 Changelog
+
+See [CHANGELOG.md](CHANGELOG.md) for release history.
+
+---
+
+## 📄 License
+
+This project is licensed under the MIT License.
+
+See [LICENSE](LICENSE) for details.
+
+---
