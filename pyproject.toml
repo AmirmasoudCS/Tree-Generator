@@ -1,5 +1,5 @@
 [project]
-name = "tree-printer"
+name = "directory-tree-printer"
 dynamic = ["version"]
 description = "A Python CLI tool for generating clean directory tree structures."
 readme = "README.md"
