@@ -1,6 +1,8 @@
 
 # 🌲 Tree Printer
 
+![Tree Printer](./images/banner.png)
+
 [![GitHub Release](https://img.shields.io/github/v/release/AmirmasoudCS/Tree-Printer)](https://github.com/AmirmasoudCS/Tree-Printer/releases)
 [![Tests](https://github.com/AmirmasoudCS/Tree-Printer/actions/workflows/tests.yml/badge.svg)](https://github.com/AmirmasoudCS/Tree-Printer/actions/workflows/tests.yml)
 [![License](https://img.shields.io/github/license/AmirmasoudCS/Tree-Printer)](LICENSE)
